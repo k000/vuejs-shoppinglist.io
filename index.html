@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>お買い物リスト</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link href="style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+</head>
+<body>
+<div class="container">
+  <div class="content">
+    <h1 class="text-center">買い物リスト</h1>
+    <hr>
+      <div id="app">
+        <P class="text-center">
+          <input type="text" placeholder="品名"　v-model="newItemTitle" class="sina"/>
+          ：<input type="number" min="1" max="30" v-model="buynum" class="sina"/>個
+            <button v-on:click="addTodo(newItemTitle,buynum)">追加</button>
+        </P>
+            <ul>
+            <buy-list
+              v-for="item in items"
+              v-bind:item="item"
+              @removeitem = "removeitem(item)"
+              @saveedit = "saveTodo"
+            >
+            </buy-list>
+            </ul>
+        <button v-on:click="deleteTodo()">チェックした項目を削除</button>
+      </div>
+    </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="a.js"></script>
+</body>
+</html>
